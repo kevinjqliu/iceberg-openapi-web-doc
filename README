@@ -13,6 +13,22 @@ To run a local version of the webapp with FastAPI,
 uvicorn iceberg_fastapi:app --reload
 ```
 
+## Modal
+[Modal](https://modal.com) is used to host the public version of this repo. Modal uses FastAPI under the hood.
+
+To run a local version of the webapp with Modal,
+```
+modal serve iceberg_modal.py
+``` 
+
+To deploy webapp with Modal,
+```
+modal deploy iceberg_modal.py
+```
+
 # What it looks like
 ## Locally from FastAPI
 ![Alt text](<assets/fastapi.jpg>)
+
+## Locally from Modal
+![Alt text](<assets/modal.jpg>)
