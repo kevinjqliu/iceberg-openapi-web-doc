@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import RedirectResponse
 from fastapi.openapi.models import OpenAPI
 from fastapi.encoders import jsonable_encoder
 import yaml
@@ -24,3 +25,9 @@ def get_openapi():
 # Set .openapi_schema to Iceberg REST API OpenAPI schema
 app = FastAPI()
 app.openapi_schema = get_openapi()
+
+# Defaults all paths to `/redoc` to show the API documentation
+# https://sureshdsk.dev/how-to-implement-catch-all-route-in-fast-api
+@app.api_route("/{path_name:path}", methods=["GET"])
+async def default_to_redoc(request: Request, path_name: str):
+    return RedirectResponse("/redoc")

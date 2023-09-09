@@ -2,7 +2,8 @@ from modal import Stub, asgi_app
 from modal import Image
 
 from fastapi.openapi.models import OpenAPI
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import RedirectResponse
 from fastapi.encoders import jsonable_encoder
 import urllib.request
 import yaml
@@ -33,3 +34,9 @@ stub = Stub("iceberg-rest-openapi")
 def fastapi_app():
     web_app.openapi_schema = get_openapi()
     return web_app
+
+# Defaults all paths to `/redoc` to show the API documentation
+# https://sureshdsk.dev/how-to-implement-catch-all-route-in-fast-api
+@web_app.api_route("/{path_name:path}", methods=["GET"])
+async def default_to_redoc(request: Request, path_name: str):
+    return RedirectResponse("/redoc")
