@@ -3,6 +3,10 @@
 
 The OpenAPI spec is difficult to read in YAML format. This repo spins up an interactive API documentation webapp to visualize the OpenAPI spec.
 
+See it live! 
+> https://kevinjqliu--iceberg-rest-openapi-fastapi-app.modal.run/
+
+
 ## FastAPI
 [FastAPI](https://github.com/tiangolo/fastapi) has a quick and easy way to spin up a webapp and create an interactive API documentation using OpenAPI definitions (with [Redoc](https://github.com/Redocly/redoc)).
 
